@@ -19,7 +19,7 @@ function one_chart(
         pointBackgroundColor: "#ffffff", // Point background color
         pointBorderColor: "rgba(34, 197, 94, 1)", // Point border color
         pointHoverRadius: 10, // Hover effect radius
-        pointHoverBackgroundColor: "#0D1117", // Hover effect background color
+        pointHoverBackgroundColor: "#fff", // Hover effect background color
       },
     ],
   };
