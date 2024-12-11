@@ -2,7 +2,8 @@ function one_chart(
   bottom_label_data,
   main_data,
   top_label_name,
-  hover_value_tag
+  hover_value_tag,
+  hover_title
 ) {
   // Sample Data for New Company
   const data = {
@@ -38,7 +39,7 @@ function one_chart(
           callbacks: {
             label: function (tooltipItem) {
               const value = tooltipItem.raw;
-              return ` Analytics: ${value}${hover_value_tag}`;
+              return ` ${hover_title}: ${value}${hover_value_tag}`;
             },
           },
         },
