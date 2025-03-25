@@ -12,7 +12,6 @@ async function uploadImage(file) {
             body: formData
         });
         const data = await response.json();
-        console.log(data);
         return data.secure_url;
     } catch (error) {
         console.error('Upload error:', error);
