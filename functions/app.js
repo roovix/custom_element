@@ -1,5 +1,5 @@
 // Function to get the current user
-function getCurrentUser() {
+function getCurrentUser(auth) {
     const getCurrentUserUid = auth.currentUser;
     if(!getCurrentUserUid) {
         return { uid: null };
@@ -43,6 +43,7 @@ function formatISODate(isoString) {
     return `${month} ${day}, ${year}`;
 }
 
+
 // Function to upload and get image url
 async function uploadImageToCloudinary(file=null, api='391989329564552', image_preset='image_preset', folder='profile') {
     const formData = new FormData();
@@ -62,3 +63,5 @@ async function uploadImageToCloudinary(file=null, api='391989329564552', image_p
         throw error;
     }
 }
+
+export { uploadImageToCloudinary, ISoToTimeAgo, getCurrentUser, formatISODate }
