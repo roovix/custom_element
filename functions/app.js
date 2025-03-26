@@ -33,6 +33,16 @@ function ISoToTimeAgo(isoString) {
     return "Just now";
 }
 
+// Format iso date into readable date
+function formatISODate(isoString) {
+    const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    const date = new Date(isoString);
+    const month = months[date.getMonth()];
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `${month} ${day}, ${year}`;
+}
+
 // Function to upload and get image url
 async function uploadImageToCloudinary(file=null, api='391989329564552', image_preset='image_preset', folder='profile') {
     const formData = new FormData();
