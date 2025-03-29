@@ -64,4 +64,16 @@ async function uploadImageToCloudinary(file=null, api='391989329564552', image_p
     }
 }
 
-export { uploadImageToCloudinary, ISoToTimeAgo, getCurrentUser, formatISODate }
+// Get domain from link
+function getDomain(url) {
+    try {
+        let hostname = new URL(url).hostname;
+        // Remove "www." if present
+        return hostname.startsWith("www.") ? hostname.substring(4) : hostname;
+    } catch (error) {
+        console.error("Invalid URL:", error);
+        return null;
+    }
+}
+
+export { uploadImageToCloudinary, ISoToTimeAgo, getCurrentUser, formatISODate, getDomain }
