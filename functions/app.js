@@ -76,4 +76,14 @@ function getDomain(url) {
     }
 }
 
-export { uploadImageToCloudinary, ISoToTimeAgo, getCurrentUser, formatISODate, getDomain }
+function isValidUID(input) {
+    // Firebase UID is a 28 character long alphanumeric string
+    return /^[A-Za-z0-9_-]{28}$/.test(input);
+}
+
+function isValidUsername(input) {
+    // Username can be alphanumeric and may include underscores, dashes, etc.
+    return /^[A-Za-z0-9_]+$/.test(input) && input.length <= 20; // Assuming max 20 characters for username
+}
+
+export { uploadImageToCloudinary, ISoToTimeAgo, getCurrentUser, formatISODate, getDomain, isValidUID, isValidUsername }
