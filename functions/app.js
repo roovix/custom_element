@@ -76,6 +76,20 @@ function getDomain(url) {
     }
 }
 
+function changeSocialMediaThumbnail(newImageURL) {
+    // Change Open Graph image (for Facebook, LinkedIn, WhatsApp, Discord, etc.)
+    const ogImage = document.querySelector('meta[property="og:image"]');
+    if (ogImage) {
+        ogImage.setAttribute('content', newImageURL);
+    }
+
+    // Change Twitter Card image
+    const twitterImage = document.querySelector('meta[name="twitter:image"]');
+    if (twitterImage) {
+        twitterImage.setAttribute('content', newImageURL);
+    }
+}
+
 function isValidUID(input) {
     // Firebase UID is a 28 character long alphanumeric string
     return /^[A-Za-z0-9_-]{28}$/.test(input);
@@ -86,4 +100,4 @@ function isValidUsername(input) {
     return /^[A-Za-z0-9_]+$/.test(input) && input.length <= 20; // Assuming max 20 characters for username
 }
 
-export { uploadImageToCloudinary, ISoToTimeAgo, getCurrentUser, formatISODate, getDomain, isValidUID, isValidUsername }
+export { uploadImageToCloudinary, ISoToTimeAgo, getCurrentUser, formatISODate, getDomain, isValidUID, isValidUsername, changeSocialMediaThumbnail }
