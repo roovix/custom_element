@@ -20,7 +20,7 @@ function addPopupStyles() {
       }
   
       .popup-container {
-        width: 100%;
+        width: 95%;
         max-width: 400px;
         background-color: var(--card-bg);
         border-radius: 8px;
