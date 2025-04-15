@@ -224,7 +224,6 @@ function deletePopup(
   const deleteBtn = popup.querySelector(".delete-btn");
 
   function closePopup() {
-    container.style.display = "flex";
     container.removeChild(popup);
   }
 
@@ -294,7 +293,6 @@ function confirmPopup(
   const confirmBtn = popup.querySelector(".confirm-btn");
 
   function closePopup() {
-    container.style.display = "flex";
     container.removeChild(popup);
   }
 
@@ -364,8 +362,7 @@ function noticePopup(
   const cancelBtn = popup.querySelector(".cancel-btn");
   const confirmBtn = popup.querySelector(".confirm-btn");
 
-  function closePopup() {
-    container.style.display = "flex";
+  function closePopup() { 
     container.removeChild(popup);
   }
 
