@@ -179,9 +179,10 @@ function addPopupStyles() {
  */
 function deletePopup(
   title = "You are about to delete task",
-  description = "Are you sure you want to delete this post? This action cannot be undone.",
+  description = "Are you sure you want to delete? This action cannot be undone.",
   onConfirm,
-  onCancel
+  onCancel,
+  container = document.body
 ) {
   const popup = document.createElement("div");
   popup.className = "popup-container";
@@ -223,7 +224,8 @@ function deletePopup(
   const deleteBtn = popup.querySelector(".delete-btn");
 
   function closePopup() {
-    document.body.removeChild(popup);
+    container.style.display = "flex";
+    container.removeChild(popup);
   }
 
   closeBtn.addEventListener("click", () => {
@@ -256,7 +258,8 @@ function confirmPopup(
   title = "Confirm action",
   description = "Are you sure you want to proceed with this action?",
   onConfirm,
-  onCancel
+  onCancel,
+  container = document.body
 ) {
   const popup = document.createElement("div");
   popup.className = "popup-container";
@@ -291,7 +294,8 @@ function confirmPopup(
   const confirmBtn = popup.querySelector(".confirm-btn");
 
   function closePopup() {
-    document.body.removeChild(popup);
+    container.style.display = "flex";
+    container.removeChild(popup);
   }
 
   closeBtn.addEventListener("click", () => {
@@ -324,7 +328,8 @@ function noticePopup(
   title = "Notice",
   description = "Please take note of this information.",
   onConfirm,
-  onCancel
+  onCancel,
+  container = document.body
 ) {
   const popup = document.createElement("div");
   popup.className = "popup-container";
@@ -360,7 +365,8 @@ function noticePopup(
   const confirmBtn = popup.querySelector(".confirm-btn");
 
   function closePopup() {
-    document.body.removeChild(popup);
+    container.style.display = "flex";
+    container.removeChild(popup);
   }
 
   closeBtn.addEventListener("click", () => {
