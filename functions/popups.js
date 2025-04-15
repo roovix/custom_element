@@ -168,6 +168,7 @@ function addPopupStyles() {
     `;
   document.head.appendChild(style);
 }
+addPopupStyles();
 
 /**
  * Creates a delete confirmation popup
@@ -385,4 +386,4 @@ function noticePopup(
 }
 
 // Export the functions if using modules
-export { deletePopup, confirmPopup, noticePopup, addPopupStyles };
+export { deletePopup, confirmPopup, noticePopup };
