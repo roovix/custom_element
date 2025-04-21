@@ -100,4 +100,51 @@ function isValidUsername(input) {
     return /^[A-Za-z0-9_]+$/.test(input) && input.length <= 20; // Assuming max 20 characters for username
 }
 
-export { uploadImageToCloudinary, ISoToTimeAgo, getCurrentUser, formatISODate, getDomain, isValidUID, isValidUsername, changeSocialMediaThumbnail }
+/**
+ * Gets current GPS coordinates
+ * @returns {Promise<{lat: number, lng: number}>} Object with latitude and longitude
+ * @throws {Error} When geolocation fails with specific error message
+ */
+async function getCurrentLocation() {
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) {
+      reject(new Error("Geolocation is not supported by this browser"));
+      return;
+    }
+
+    const options = {
+      enableHighAccuracy: true,  // Request GPS if available
+      timeout: /Android/i.test(navigator.userAgent) ? 30000 : 10000, // Longer timeout for Android
+      maximumAge: 0  // Don't use cached position
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        resolve({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        });
+      },
+      (error) => {
+        let errorMessage;
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            errorMessage = "Location access was denied. Please enable permissions.";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            errorMessage = "Location information is unavailable.";
+            break;
+          case error.TIMEOUT:
+            errorMessage = "The request to get location timed out. Try again in an open area.";
+            break;
+          default:
+            errorMessage = "An unknown error occurred while getting location.";
+        }
+        reject(new Error(errorMessage));
+      },
+      options
+    );
+  });
+}
+
+export { uploadImageToCloudinary, ISoToTimeAgo, getCurrentUser, formatISODate, getDomain, isValidUID, isValidUsername, changeSocialMediaThumbnail, getCurrentLocation }
